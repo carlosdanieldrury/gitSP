@@ -45,10 +45,16 @@ class Component(object):
                 raise ValueError("Component.__init__: Invalid Value for locCount value, integer")
         
     def getName(self):
+        '''
+        Method getName: returns the name of component.
+        '''
         return self.name
     
     #Returns the method count
     def getMethodCount(self):
+        '''
+        Method getMethodCount: returns how many methods the component has
+        '''
         return self.methodCount
         
     #Returns the number of line of code    

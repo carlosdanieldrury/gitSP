@@ -14,20 +14,25 @@ class ComponentTest(unittest.TestCase):
     '''
 
     def setUp(self):
+        #Instantiate a component
         self.C1 = component.Component("C1",4,20)
         #return C1
     
     def testGetNameC1(self):
+        #test the method getName
         return self.C1.getName()
     
     def testGetNumMetC1(self):
+        #test the method getMethodCount
         return self.C1.getMethodCount()
     
     def testGetLocCount(self):
+        #test the method getLocCount
         return self.C1.getLocCount()
     
         
     def testExceptionNameMissing(self):
+        #test the exception when the name of component is missing
         expectedString = "Component.__init__: The Component needs a name"        
         
         try:
@@ -41,6 +46,7 @@ class ComponentTest(unittest.TestCase):
             self.fail("incorrect exception was raised")
             
     def testExceptionNameError(self):
+        #test the exception when the name of component is a number
         expectedString = "Component.__init__:"        
         
         try:
@@ -55,6 +61,7 @@ class ComponentTest(unittest.TestCase):
 
         
     def testExceptionMetNumber(self):
+        #test the exception when the methodCount of component is a negative number
         expectedString = "Component.__init__: methodCount needs to be grand than or equal to 0"
         try:
             testComponent = component.Component("C1",-1,20)
@@ -68,6 +75,7 @@ class ComponentTest(unittest.TestCase):
             
     
     def testExceptionMetMissing(self):
+        #test the exception when the methodCount of component is missing
         expectedString = "Component.__init__: MethodCount Missing"
         try:
             testComponent = component.Component("C1",locCount=20)
@@ -83,6 +91,7 @@ class ComponentTest(unittest.TestCase):
     
             
     def testExceptionMetCaracter(self):
+        #test the exception when the methodCount of component is a string
         expectedString = "Component.__init__: Invalid value for methodCount, it needs to be a number grand than or equal to 0"
         try:
             testComponent = component.Component("C1","X",20)
@@ -96,6 +105,7 @@ class ComponentTest(unittest.TestCase):
             
             
     def testExceptionLOCMissing(self):
+        #test the exception when the locCount of component is missing
         expectedString = "Component.__init__: Missing locCount value"
         try:
             testComponent = component.Component("C1",methodCount=4)
@@ -109,6 +119,7 @@ class ComponentTest(unittest.TestCase):
             
     
     def testExceptionLOCNumber(self):
+        #test the exception when the locCount of component is 0
         expectedString = "Component.__init__:Invalid Value for the locCount, integer grand than 0"
         try:
             testComponent = component.Component("C1",4,0)
@@ -124,6 +135,7 @@ class ComponentTest(unittest.TestCase):
     
 
     def testExceptionLOCCaracter(self):
+        #test the exception when the locCount of component is a caracter
         expectedString = "Component.__init__: Invalid Value for locCount value, integer"
         try:
             testComponent = component.Component("C1",4,"X")

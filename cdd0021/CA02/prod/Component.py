@@ -60,3 +60,6 @@ class Component(object):
     #Returns the number of line of code    
     def getLocCount(self):
         return self.locCount
+    
+    def setRelativeSize(self, size):
+        self.size = size

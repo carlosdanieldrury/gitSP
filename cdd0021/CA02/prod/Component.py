@@ -70,4 +70,7 @@ class Component(object):
                 raise ValueError("Component.setRelativeSize: The size needs to be VS,S,M,L or VL")
             else:
                 self.size = size
+                
+    def getRelativeSize(self):
+        return self.size            
         

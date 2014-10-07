@@ -147,7 +147,7 @@ class ComponentTest(unittest.TestCase):
             self.fail("incorrect exception was raised")
             
             
-    
+    #happy
     def test_02_11_001_setRelativeSizeVS(self):
         self.C1.setRelativeSize("VS")
         
@@ -161,7 +161,10 @@ class ComponentTest(unittest.TestCase):
         self.C1.setRelativeSize("L")
      
     def test_02_11_005_setRelativeSizeVS(self):
-        self.C1.setRelativeSize("VL")        
+        self.C1.setRelativeSize("VL")   
+        
+    def test_02_11_006_setRelativeSizeVS(self):
+        self.C1.setRelativeSize()         
          
             
 if __name__ == "__main__":

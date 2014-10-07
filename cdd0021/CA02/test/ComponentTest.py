@@ -150,6 +150,18 @@ class ComponentTest(unittest.TestCase):
     
     def test_02_11_001_setRelativeSizeVS(self):
         self.C1.setRelativeSize("VS")
+        
+    def test_02_11_002_setRelativeSizeVS(self):
+        self.C1.setRelativeSize("S")   
+        
+    def test_02_11_003_setRelativeSizeVS(self):
+        self.C1.setRelativeSize("M")
+        
+    def test_02_11_004_setRelativeSizeVS(self):
+        self.C1.setRelativeSize("L")
+     
+    def test_02_11_005_setRelativeSizeVS(self):
+        self.C1.setRelativeSize("VL")        
          
             
 if __name__ == "__main__":

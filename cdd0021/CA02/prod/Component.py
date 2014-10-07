@@ -61,5 +61,7 @@ class Component(object):
     def getLocCount(self):
         return self.locCount
     
-    def setRelativeSize(self, size):
+    def setRelativeSize(self, size=None):
+        if (size==None):
+            self.size = "M"
         self.size = size

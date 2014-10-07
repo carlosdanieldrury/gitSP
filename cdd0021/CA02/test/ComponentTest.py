@@ -151,24 +151,29 @@ class ComponentTest(unittest.TestCase):
     def test_02_11_001_setRelativeSizeVS(self):
         self.C1.setRelativeSize("VS")
         
-    def test_02_11_002_setRelativeSizeVS(self):
+    def test_02_11_002_setRelativeSizeS(self):
         self.C1.setRelativeSize("S")   
         
-    def test_02_11_003_setRelativeSizeVS(self):
+    def test_02_11_003_setRelativeSizeM(self):
         self.C1.setRelativeSize("M")
         
-    def test_02_11_004_setRelativeSizeVS(self):
+    def test_02_11_004_setRelativeSizeL(self):
         self.C1.setRelativeSize("L")
      
-    def test_02_11_005_setRelativeSizeVS(self):
+    def test_02_11_005_setRelativeSizeVL(self):
         self.C1.setRelativeSize("VL")   
         
-    def test_02_11_006_setRelativeSizeVS(self):
+    def test_02_11_006_setRelativeSize(self):
         self.C1.setRelativeSize() 
         
     #sad
-    def test_02_11_007_setRelativeSizeVS(self):
+    def test_02_11_007_setRelativeSizeX(self):
         self.assertRaises(ValueError, self.C1.setRelativeSize, "X")    
+        
+    def test_02_12_001_getRelativeSize(self):
+        self.C1.setRelativeSize("M")
+        self.C1.getRelativeSize()
+        
             
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

@@ -11,11 +11,12 @@ class Component(object):
     how many lines of code this component has.
     '''
 
-
     def __init__(self, name=None, methodCount=None, locCount=None):
         '''
         Constructor
         '''
+        self.sizes = ["VS","S","M","L","VL"]
+        
         if name==None:
             raise ValueError("Component.__init__: The Component needs a name")
         else:
@@ -64,4 +65,9 @@ class Component(object):
     def setRelativeSize(self, size=None):
         if (size==None):
             self.size = "M"
-        self.size = size
+        else:
+            if (self.sizes.count(size)==0):
+                raise ValueError("Component.setRelativeSize: The size needs to be VS,S,M,L or VL")
+            else:
+                self.size = size
+        

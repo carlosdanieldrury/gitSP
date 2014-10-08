@@ -51,6 +51,8 @@ class Repository(object):
                 self.repository.popleft()
             
             for comp in self.repository:
+                if (comp == Comp):
+                    raise ValueError("Repository.addComponent: This component is already in the repository")
                 if (comp.getName() == Comp.getName()):
                     raise ValueError("Repository.addComponent: There is a component with the same name inside the repository")
                  

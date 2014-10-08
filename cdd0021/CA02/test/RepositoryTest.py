@@ -113,6 +113,7 @@ class RepositoryTest(unittest.TestCase):
         #print relativeSizes
 
     def test_02_21_001_ComponentSameName(self):
+        self.testRepository = repository.Repository(5)
         component1 = component.Component(name="Component01",methodCount=1,locCount=76)
         component2 = component.Component("Component02",locCount=116,methodCount=4)
         component01 = component.Component("Component01",7,locCount=113)

@@ -49,9 +49,15 @@ class Repository(object):
             if (self.getCapacity() == self.ocupancy):
                 self.ocupancy -= 1
                 self.repository.popleft()
-                
+            
+            for comp in self.repository:
+                if (comp.getName() == Comp.getName()):
+                    raise ValueError("Repository.addComponent: There is a component with the same name inside the repository")
+                 
             self.repository.append(Comp)
             self.ocupancy += 1
+
+                
         
     def validCount(self):
         '''

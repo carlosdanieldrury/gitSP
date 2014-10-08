@@ -123,7 +123,9 @@ class Repository(object):
         return [vs,s,m,l,vl]
     
     
-    def getRelativeSize(self, Comp):
+    def getRelativeSize(self, Comp=None):
+        if Comp==None:
+            raise ValueError("Repository.getRelativeSize: Missing a parameter of the component")
         for comp in self.repository:
             if (comp == Comp):
                 return comp.getRelativeSize()

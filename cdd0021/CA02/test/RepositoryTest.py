@@ -112,6 +112,13 @@ class RepositoryTest(unittest.TestCase):
         relativeSizes = self.testRepository.determineRelativeSizes()
         #print relativeSizes
 
+    def test_02_21_001_ComponentSameName(self):
+        component1 = component.Component(name="Component01",methodCount=1,locCount=76)
+        component2 = component.Component("Component02",locCount=116,methodCount=4)
+        component01 = component.Component("Component01",7,locCount=113)
+        self.testRepository.addComponent(component1)
+        self.testRepository.addComponent(component2)
+        self.assertRaises(ValueError, self.testRepository.addComponent, component01)
     
 
 if __name__ == "__main__":

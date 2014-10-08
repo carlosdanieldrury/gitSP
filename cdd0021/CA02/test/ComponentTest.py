@@ -174,7 +174,7 @@ class ComponentTest(unittest.TestCase):
         self.C1.setRelativeSize("M")
         self.C1.getRelativeSize()
         
-            
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

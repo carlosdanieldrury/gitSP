@@ -138,6 +138,14 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component2)
         self.testRepository.getRelativeSize(component3)
     
+    def test_02_22_002_getRelativeSizeNoParam(self):
+        self.testRepository = repository.Repository(5)
+        component1 = component.Component(name="Component01",methodCount=1,locCount=76)
+        component2 = component.Component("Component02",locCount=116,methodCount=4)
+        self.testRepository.addComponent(component1)
+        self.testRepository.addComponent(component2)
+        self.testRepository.getRelativeSize()
+    
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

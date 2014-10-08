@@ -121,4 +121,10 @@ class Repository(object):
         
         
         return [vs,s,m,l,vl]
+    
+    
+    def getRelativeSize(self, Comp):
+        for comp in self.repository:
+            if (comp == Comp):
+                return comp.getRelativeSize()
             

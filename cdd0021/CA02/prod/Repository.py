@@ -140,8 +140,10 @@ class Repository(object):
         relativeSizes = {"VS":listSizes[0], "S":listSizes[1],
                          "M":listSizes[2], "L":listSizes[3],
                          "VL":listSizes[4]}
-        
-        estimatedSize = methodCount * int(relativeSizes[size])
-        componentNew = component.Component(name,methodCount,estimatedSize)
-        return componentNew
+        if (relativeSizes.__contains__(size)):
+            estimatedSize = methodCount * int(relativeSizes[size])
+            componentNew = component.Component(name,methodCount,estimatedSize)
+            return componentNew
+        else:
+            raise ValueError("Repository.estimateByRelativeSize: size needs to be VS, S, M, L or VL")
             

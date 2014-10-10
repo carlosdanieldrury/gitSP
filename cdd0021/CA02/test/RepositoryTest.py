@@ -203,7 +203,7 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component5)
         self.assertRaises(ValueError, self.testRepository.estimateByRelativeSize, "X",0,"L")
         
-    def test_02_23_004_estimateByRelativeSizeExc3(self):
+    def test_02_23_004_estimateByRelativeSizeExc4(self):
         self.testRepository = repository.Repository(5)
         component1 = component.Component("Component01",1,1)
         component2 = component.Component("Component02",2,4)
@@ -217,7 +217,7 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component5)
         self.assertRaises(ValueError, self.testRepository.estimateByRelativeSize, "Y","X","L")
         
-     def test_02_23_004_estimateByRelativeSizeExc3(self):
+    def test_02_23_005_estimateByRelativeSizeExc5(self):
         self.testRepository = repository.Repository(5)
         component1 = component.Component("Component01",1,1)
         component2 = component.Component("Component02",2,4)

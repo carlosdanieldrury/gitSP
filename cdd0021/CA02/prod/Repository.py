@@ -185,12 +185,11 @@ class Repository(object):
         if (sizeComp>vl):
             Comp.setRelativeSize("VL")
                 
-        
         return Comp.getRelativeSize()
             
     def estimateByRelativeSize(self,name=None,methodCount=None,size=None):
         if len(self.repository) < 5:
-            raise ValueError("Repository.getRelativeSize: There is no enough number of components")
+            raise ValueError("Repository.estimateByRelativeSize: There is no enough number of components")
         if name==None:
             raise ValueError("Repository.estimateByRelativeSize: The name is missing")
         if methodCount==None:
@@ -204,7 +203,6 @@ class Repository(object):
         if methodCount==0:
             raise ValueError("Repository.estimateByRelativeSize: MethodCount equal to 0 makes the relative size equal to 0")
         listSizes = self.determineRelativeSizes()
-        #print listSizes
         relativeSizes = {"VS":listSizes[0], "S":listSizes[1],
                          "M":listSizes[2], "L":listSizes[3],
                          "VL":listSizes[4]}

@@ -141,7 +141,7 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component3)
         self.testRepository.addComponent(component4)
         self.testRepository.addComponent(component5)
-        componentNew = component.Component("ComponentN",5,10)
+        componentNew = component.Component("ComponentN",1,76)
         self.testRepository.getRelativeSize(componentNew)
     
     def test_02_22_002_getRelativeSizeNoParam(self):

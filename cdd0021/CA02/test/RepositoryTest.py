@@ -133,10 +133,16 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository = repository.Repository(5)
         component1 = component.Component(name="Component01",methodCount=1,locCount=76)
         component2 = component.Component("Component02",locCount=116,methodCount=4)
-        component3 = component.Component(name="Component01",methodCount=1,locCount=76)
+        component3 = component.Component(name="Component03",methodCount=1,locCount=76)
+        component4 = component.Component("Component04",4,8)
+        component5 = component.Component("Component05",5,10)
         self.testRepository.addComponent(component1)
         self.testRepository.addComponent(component2)
-        self.testRepository.getRelativeSize(component3)
+        self.testRepository.addComponent(component3)
+        self.testRepository.addComponent(component4)
+        self.testRepository.addComponent(component5)
+        componentNew = component.Component("ComponentN",5,10)
+        self.testRepository.getRelativeSize(componentNew)
     
     def test_02_22_002_getRelativeSizeNoParam(self):
         self.assertRaises(ValueError, self.testRepository.getRelativeSize)
@@ -203,7 +209,7 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component5)
         self.assertRaises(ValueError, self.testRepository.estimateByRelativeSize, "X",0,"L")
         
-    def test_02_23_004_estimateByRelativeSizeExc4(self):
+    def test_02_23_005_estimateByRelativeSizeExc4(self):
         self.testRepository = repository.Repository(5)
         component1 = component.Component("Component01",1,1)
         component2 = component.Component("Component02",2,4)
@@ -217,7 +223,7 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component5)
         self.assertRaises(ValueError, self.testRepository.estimateByRelativeSize, "Y","X","L")
         
-    def test_02_23_005_estimateByRelativeSizeExc5(self):
+    def test_02_23_006_estimateByRelativeSizeExc5(self):
         self.testRepository = repository.Repository(5)
         component1 = component.Component("Component01",1,1)
         component2 = component.Component("Component02",2,4)
@@ -231,7 +237,7 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component5)
         self.assertRaises(ValueError, self.testRepository.estimateByRelativeSize, "Y",2 ,"X") 
         
-    def test_02_23_006_estimateByRelativeSizeExc6(self):
+    def test_02_23_007_estimateByRelativeSizeExc6(self):
         self.testRepository = repository.Repository(5)
         component1 = component.Component("Component01",1,1)
         component2 = component.Component("Component02",2,4)
@@ -245,7 +251,7 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component5)
         self.assertRaises(ValueError, self.testRepository.estimateByRelativeSize, "Y",2 ,2) 
         
-    def test_02_23_007_estimateByRelativeSizeExc7(self):
+    def test_02_23_008_estimateByRelativeSizeExc7(self):
         self.testRepository = repository.Repository(5)
         component1 = component.Component("Component01",1,1)
         component2 = component.Component("Component02",2,4)
@@ -260,6 +266,11 @@ class RepositoryTest(unittest.TestCase):
         self.assertRaises(ValueError, self.testRepository.estimateByRelativeSize)
         
       
+    def test_02_23_009_estimateByRelativeSizeExc8(self):
+        self.testRepository = repository.Repository(5)
+        component1 = component.Component("Component01",1,1)
+        self.testRepository.addComponent(component1)
+        self.assertRaises(ValueError, self.testRepository.estimateByRelativeSize)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

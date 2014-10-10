@@ -119,7 +119,6 @@ class Repository(object):
         
         vl = math.ceil(math.exp(avg + 2*stdev))
         
-        
         return [vs,s,m,l,vl]
     
     
@@ -131,8 +130,12 @@ class Repository(object):
                 return comp.getRelativeSize()
             
     def estimateByRelativeSize(self,name,methodCount,size):
+        for comp in self.repository:
+            if comp.getName()==name:
+                raise ValueError("Repository.estimateByRelativeSize: The name of the component is already in the repository")
+        
         listSizes = self.determineRelativeSizes()
-        print listSizes
+        #print listSizes
         relativeSizes = {"VS":listSizes[0], "S":listSizes[1],
                          "M":listSizes[2], "L":listSizes[3],
                          "VL":listSizes[4]}

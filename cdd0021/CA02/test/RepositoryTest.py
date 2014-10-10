@@ -153,7 +153,7 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component3)
         self.testRepository.addComponent(component4)
         self.testRepository.addComponent(component5)
-        self.testRepository.estimateByRelativeSize("X",2,"L")
+        ComponetNew = self.testRepository.estimateByRelativeSize("X",2,"L")
     
 
 if __name__ == "__main__":

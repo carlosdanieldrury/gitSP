@@ -130,3 +130,13 @@ class Repository(object):
             if (comp == Comp):
                 return comp.getRelativeSize()
             
+    def estimateByRelativeSize(self,name,methodCount,size):
+        listSizes = self.determineRelativeSizes()
+        relativeSizes = {"VS":listSizes[0], "S":listSizes[1],
+                         "M":listSizes[2], "L":listSizes[3],
+                         "VL":listSizes[4]}
+        
+        estimatedSize = size * relativeSizes(size)
+        componentNew = component.Component(name,methodCount,size)
+        return componentNew
+            

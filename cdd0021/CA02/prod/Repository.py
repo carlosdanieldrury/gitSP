@@ -132,6 +132,7 @@ class Repository(object):
             
     def estimateByRelativeSize(self,name,methodCount,size):
         listSizes = self.determineRelativeSizes()
+        print listSizes
         relativeSizes = {"VS":listSizes[0], "S":listSizes[1],
                          "M":listSizes[2], "L":listSizes[3],
                          "VL":listSizes[4]}

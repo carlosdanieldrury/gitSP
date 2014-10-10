@@ -136,7 +136,7 @@ class Repository(object):
                          "M":listSizes[2], "L":listSizes[3],
                          "VL":listSizes[4]}
         
-        estimatedSize = size * relativeSizes(size)
-        componentNew = component.Component(name,methodCount,size)
+        estimatedSize = methodCount * int(relativeSizes[size])
+        componentNew = component.Component(name,methodCount,estimatedSize)
         return componentNew
             

@@ -154,6 +154,7 @@ class RepositoryTest(unittest.TestCase):
         self.testRepository.addComponent(component4)
         self.testRepository.addComponent(component5)
         ComponetNew = self.testRepository.estimateByRelativeSize("X",2,"L")
+        print "Name :".join(ComponetNew.getName())
     
 
 if __name__ == "__main__":

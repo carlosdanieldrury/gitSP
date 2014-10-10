@@ -129,7 +129,14 @@ class Repository(object):
             if (comp == Comp):
                 return comp.getRelativeSize()
             
-    def estimateByRelativeSize(self,name,methodCount,size):
+    def estimateByRelativeSize(self,name=None,methodCount=None,size=None):
+        if name==None:
+            raise ValueError("Repository.estimateByRelativeSize: The name is missing")
+        if methodCount==None:
+            raise ValueError("Repository.estimateByRelativeSize: The methodCount is missing")
+        if size==None:
+            raise ValueError("Repository.estimateByRelativeSize: The size is missing")
+        
         for comp in self.repository:
             if comp.getName()==name:
                 raise ValueError("Repository.estimateByRelativeSize: The name of the component is already in the repository")

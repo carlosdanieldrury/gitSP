@@ -133,7 +133,8 @@ class Repository(object):
         for comp in self.repository:
             if comp.getName()==name:
                 raise ValueError("Repository.estimateByRelativeSize: The name of the component is already in the repository")
-        
+        if methodCount==0:
+            raise ValueError("Repository.estimateByRelativeSize: MethodCount equal to 0 makes the relative size equal to 0")
         listSizes = self.determineRelativeSizes()
         #print listSizes
         relativeSizes = {"VS":listSizes[0], "S":listSizes[1],

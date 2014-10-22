@@ -6,6 +6,7 @@ Created on Oct 21, 2014
 import unittest
 import CA03.prod.PythonScript as PythonScript
 import os
+import CA03.prod.Component as Component
 
 
 class TestPythonScript(unittest.TestCase):
@@ -32,7 +33,15 @@ class TestPythonScript(unittest.TestCase):
         testFileName = "pythonFile.py"
         testPythonScript = PythonScript.PythonScript(fileName=testFileName)
         self.assertEquals(numberOfLines, testPythonScript.countLine())
-
+        
+    def test100_050_ShouldReturnAListWithCompInfo(self):
+        list = ([Component("ClassA", 2,5), Component("ClassB",1,3)], [Component("Func",1,2)])
+        testFileName = "pythonFile.py"
+        testPythonScript = PythonScript.PythonScript(fileName=testFileName)
+        self.assertEquals(list, testPythonScript. extractDesign())
+        
+    
+        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

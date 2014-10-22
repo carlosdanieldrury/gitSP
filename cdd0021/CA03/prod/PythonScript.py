@@ -16,3 +16,6 @@ class PythonScript(object):
         Constructor
         '''
         self.fileName = fileName
+        
+    def getFileName(self):
+        return self.fileName

@@ -14,6 +14,11 @@ class TestPythonScript(unittest.TestCase):
     # happy
     def test100_010_ShouldConstructorWorkPythonFile(self):
         testPythonScript = PythonScript.PythonScript(fileName="pythonFile.py")
+        
+    def test100_020_ShouldReceiveNameOfFile(self):
+        testFileName = "pythonFile.py"
+        testPythonScript = PythonScript.PythonScript(fileName="pythonFile.py")
+        self.assertEquals(testFileName, testPythonScript.getFileName())
 
 
 if __name__ == "__main__":

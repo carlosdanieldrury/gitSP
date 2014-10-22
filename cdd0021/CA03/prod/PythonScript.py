@@ -26,3 +26,10 @@ class PythonScript(object):
     def getFilePath(self):
         self.filePath = os.path.abspath(self.fileName)
         return self.filePath
+    
+    def countLine(self):
+        numLines = 0
+        file = open(self.fileName, 'r')
+        for line in file:
+            numLines +=1
+        return numLines

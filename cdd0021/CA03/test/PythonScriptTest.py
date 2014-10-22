@@ -26,6 +26,12 @@ class TestPythonScript(unittest.TestCase):
         testFilePath = os.path.abspath(testFileName)
         testPythonScript = PythonScript.PythonScript(fileName=testFileName)
         self.assertEquals(testFilePath, testPythonScript.getFilePath())
+        
+    def test100_040_ShouldReturnNumberOfLines(self):
+        numberOfLines = 11
+        testFileName = "pythonFile.py"
+        testPythonScript = PythonScript.PythonScript(fileName=testFileName)
+        self.assertEquals(numberOfLines, testPythonScript.countLine())
 
 
 if __name__ == "__main__":

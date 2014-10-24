@@ -5,6 +5,7 @@ Created on Oct 21, 2014
 '''
 
 import os
+from CA03.prod import Component as Component
 
 class PythonScript(object):
     '''
@@ -33,3 +34,93 @@ class PythonScript(object):
         for line in file:
             numLines +=1
         return numLines
+    
+    def extractDesign(self):
+        file = open(self.fileName, 'r')
+        comp = "class"
+        func = "def"
+        tab = 0
+        listComp = []
+        listFunc = []
+        numSpaces = 0
+ 
+        
+        line = file.readline()
+             
+            
+        while 1:
+            
+            tab = line.count("\t")
+
+            if (line[0:5]==comp):
+
+                cont = 6
+                nameClass = ""
+                methodCount = 0
+                locCount = 0
+                while line[cont] != "(":
+                    tab = line.count(' ')
+                    nameClass = nameClass + line[cont]
+                    cont += 1
+
+                line = file.readline()
+                #line = line.replace(" ","")
+                locCount += 1
+                
+                while 1:
+                    tab = line.count("\t")
+                    line = line.strip()
+                    if (line[0:3]==func):
+                    #if line.find(func)>-1:
+                        methodCount += 1
+                    line = file.readline()    
+                    locCount += 1
+
+                    
+                    if ((line[0:5]==comp)or ((line[0:3]==func) and (tab==0))):
+                        break
+
+                newComponent = Component.Component(nameClass, methodCount, locCount)
+                listComp.append(newComponent)
+            else:
+                if (line[0:3]==func):
+                    nameFunc = ""
+                    locCount = 0
+                    methodCount = 1
+                    cont = 4
+                    while line[cont] != "(":
+                        nameFunc = nameFunc + line[cont]
+                        cont += 1
+
+                    line = file.readline()
+                    locCount += 1
+                    
+                    while 1:
+                        tab = line.count("\t")
+                        line = line.strip()
+                        if (line[0:3]==func):
+                        #if line.find(func)>-1:
+                            methodCount += 1
+                        line = file.readline()    
+                        locCount += 1
+
+                        if not line:
+                            break
+                        if ((line[0:5]==comp) or ((line[0:3]==func) and (tab==0))):
+                            break
+                    
+                    newFunc = Component.Component(nameFunc, methodCount, locCount)
+                    listFunc.append(newFunc)
+                    if (line[0:5] == comp):
+                            break
+
+                else :
+                    line = file.readline()
+            if not line:
+                list = [listComp,listFunc]
+                return list
+            
+        
+            
+                
+                

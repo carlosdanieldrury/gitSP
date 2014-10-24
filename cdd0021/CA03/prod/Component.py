@@ -81,3 +81,8 @@ class Component(object):
             raise ValueError("Component.getRelativeSize: There is no information about size")
         return self.size            
         
+    def __repr__(self):
+        return 'Component("%s",%s,%s)' % (self.name, self.methodCount, self.locCount)
+    
+    def __str__(self):
+        return 'Component("%s",%s,%s)' % (self.name, self.methodCount, self.locCount)

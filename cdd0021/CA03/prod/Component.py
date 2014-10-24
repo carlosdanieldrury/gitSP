@@ -19,35 +19,35 @@ class Component(object):
         self.sizes = ["VS","S","M","L","VL"]
         
         if (((name==None) and (methodCount==None)) and locCount==None):
-            raise ValueError("Component.__init__: There are not parameters")
+            raise ValueError("Component.__init__:  There are not parameters")
         
         if name==None:
-            raise ValueError("Component.__init__: The Component needs a name")
+            raise ValueError("Component.__init__:  The Component needs a name")
         else:
             if isinstance(name, basestring) and name != "":
                 self.name = name
             else:
-                raise ValueError("Component.__init__: Invalid name for the Component")
+                raise ValueError("Component.__init__:  Invalid name for the Component")
         if (methodCount == None):
-            raise ValueError("Component.__init__: MethodCount Missing")
+            raise ValueError("Component.__init__:  MethodCount Missing")
         else:
             if isinstance(methodCount, int):
                 if (methodCount >= 0):
                     self.methodCount = methodCount
                 else:
-                    raise ValueError("Component.__init__: methodCount needs to be grand than or equal to 0")
+                    raise ValueError("Component.__init__:  methodCount needs to be grand than or equal to 0")
             else:
-                raise ValueError("Component.__init__: Invalid value for methodCount, it needs to be a number grand than or equal to 0")
+                raise ValueError("Component.__init__:  Invalid value for methodCount, it needs to be a number grand than or equal to 0")
         if (locCount == None):
-            raise ValueError("Component.__init__: Missing locCount value")
+            raise ValueError("Component.__init__:  Missing locCount value")
         else:
             if isinstance(locCount, int):
                 if locCount > 0:
                     self.locCount = locCount
                 else:
-                    raise ValueError("Component.__init__:Invalid Value for the locCount, integer grand than 0")
+                    raise ValueError("Component.__init__:  Invalid Value for the locCount, integer grand than 0")
             else:
-                raise ValueError("Component.__init__: Invalid Value for locCount value, integer")
+                raise ValueError("Component.__init__:  Invalid Value for locCount value, integer")
         
     def getName(self):
         '''
@@ -71,14 +71,14 @@ class Component(object):
             self.size = "M"
         else:
             if (self.sizes.count(size)==0):
-                raise ValueError("Component.setRelativeSize: The size needs to be VS,S,M,L or VL")
+                raise ValueError("Component.setRelativeSize:  The size needs to be VS,S,M,L or VL")
             else:
                 self.size = size
         return self.size
                 
     def getRelativeSize(self):
         if (self.size==None):
-            raise ValueError("Component.getRelativeSize: There is no information about size")
+            raise ValueError("Component.getRelativeSize:  There is no information about size")
         return self.size            
         
     def __repr__(self):

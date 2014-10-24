@@ -14,7 +14,7 @@ class TestRepository(unittest.TestCase):
         
     #100_9xx ... sad path
     def test100_910_ShouldRaiseExceptionOnNonIntCapacity(self):
-        expectedString = "Repository.__init__:"
+        expectedString = "Repository.__init__:  "
         try:
             myRepository = Repository.Repository("a")                                                
             self.fail("exception was not raised")                    
@@ -27,7 +27,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
     
     def test100_920_ShouldRaiseExceptionOnInvalidCapacity(self):
-        expectedString = "Repository.__init__:"
+        expectedString = "Repository.__init__:  "
         try:
             myRepository = Repository.Repository(capacity=0)                                                
             self.fail("exception was not raised")                    
@@ -68,7 +68,7 @@ class TestRepository(unittest.TestCase):
         self.assertEquals(2, theRepository.validCount())
         
     def test200_910_shouldRaiseExceptionIfComponentMissing(self):
-        expectedString = "Repository.addComponent:"
+        expectedString = "Repository.addComponent:  "
         theRepository = Repository.Repository()
         try:                                             
             theRepository.addComponent()
@@ -181,7 +181,7 @@ class TestRepository(unittest.TestCase):
         
     #600_9xx . . . sad path
     def test600_910_shouldRaiseExceptionOnSmallCapacity(self):  
-        expectedString = "Repository.determineRelativeSizes:" 
+        expectedString = "Repository.determineRelativeSizes:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("LoneComponent", 1, 10))
@@ -197,7 +197,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
             
     def test600_920_shouldRaiseExceptionOnTooFewValidComponents(self):  
-        expectedString = "Repository.determineRelativeSizes:" 
+        expectedString = "Repository.determineRelativeSizes:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("NonZero", 1, 10))
@@ -216,7 +216,7 @@ class TestRepository(unittest.TestCase):
 #---------------- CA02 -------------------------    
 # addComponent       
     def test200_920_shouldObjectToDuplicateComponent(self):
-        expectedString = "Repository.addComponent:"
+        expectedString = "Repository.addComponent:  "
         theRepository = Repository.Repository()
         theComponent = Component.Component("X", 5, 100)
         duplicateComponent = Component.Component("X", 1, 10)
@@ -267,7 +267,7 @@ class TestRepository(unittest.TestCase):
         self.assertEquals(newMethodCount*expectedSizes[sizeList.index(newRelativeSize)], newComponent.getLocCount()) 
         
     def test700_910_ShouldObjectToMissingName(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -284,7 +284,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
 
     def test700_920_ShouldObjectToNonStringName(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -301,7 +301,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
             
     def test700_930_ShouldObjectToEmptyStringName(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -318,7 +318,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
         
     def test700_940_ShouldObjectToMissingMethodCount(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -335,7 +335,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
             
     def test700_950_ShouldObjectToZeroMethodCount(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -352,7 +352,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
             
     def test700_960_ShouldObjectToNonIntMethodCount(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -369,9 +369,9 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
 
     def test700_970_ShouldObjectToBadSize(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
-        theRepository = Repository.Repository(maxCapacity)
+        theRepository = Repository.Repository(maxCapacity)  
         theRepository.addComponent(Component.Component("C1", 1, 10))
         theRepository.addComponent(Component.Component("C2", 1, 10))
         try:
@@ -386,7 +386,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
         
     def test700_980_ShouldObjectToSmallRepository(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -402,7 +402,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
             
     def test700_985_ShouldObjectToSmallRepository(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -419,7 +419,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
 
     def test700_990_ShouldObjectToDuplicateName(self):
-        expectedString = "Repository.estimateByRelativeSize:" 
+        expectedString = "Repository.estimateByRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -464,7 +464,7 @@ class TestRepository(unittest.TestCase):
         self.assertEquals(newRelativeSize, theRepository.getRelativeSize(newComponent))
         
     def test800_900_ShouldObjectToMissingComponent(self):
-        expectedString = "Repository.getRelativeSize:" 
+        expectedString = "Repository.getRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -481,7 +481,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
             
     def test800_910_ShouldObjectToZeroMethodComponents(self):
-        expectedString = "Repository.getRelativeSize:" 
+        expectedString = "Repository.getRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -499,7 +499,7 @@ class TestRepository(unittest.TestCase):
             
     
     def test800_920_ShouldObjectToSmallRepository(self):
-        expectedString = "Repository.getRelativeSize:" 
+        expectedString = "Repository.getRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))
@@ -515,7 +515,7 @@ class TestRepository(unittest.TestCase):
             self.fail("incorrect exception was raised: " + str(e))  
 
     def test800_930_ShouldObjectToSmallRepository(self):
-        expectedString = "Repository.getRelativeSize:" 
+        expectedString = "Repository.getRelativeSize:  " 
         maxCapacity = 100
         theRepository = Repository.Repository(maxCapacity)
         theRepository.addComponent(Component.Component("C1", 1, 10))

@@ -25,7 +25,7 @@ class Repository(object):
             if capacity > 0 and isinstance(capacity, int) :
                 self.capacity = capacity
             else:
-                raise ValueError("Repository.__init__: The capacity needs to be grand than 0")
+                raise ValueError("Repository.__init__:  The capacity needs to be grand than 0")
         
     def count(self):
         '''
@@ -44,7 +44,7 @@ class Repository(object):
         Method addComponent - Add a component into the repository. Need a parameter.
         '''
         if Comp==None:
-            raise ValueError("Repository.addComponent: The method addComponent needs a parameter")
+            raise ValueError("Repository.addComponent:  The method addComponent needs a parameter")
         else:
             #check first if the repository is not full
             if (self.getCapacity() == self.ocupancy):
@@ -53,9 +53,9 @@ class Repository(object):
             
             for comp in self.repository:
                 if (comp == Comp):
-                    raise ValueError("Repository.addComponent: This component is already in the repository")
+                    raise ValueError("Repository.addComponent:  This component is already in the repository")
                 if (comp.getName() == Comp.getName()):
-                    raise ValueError("Repository.addComponent: There is a component with the same name inside the repository")
+                    raise ValueError("Repository.addComponent:  There is a component with the same name inside the repository")
                  
             self.repository.append(Comp)
             self.ocupancy += 1
@@ -79,7 +79,7 @@ class Repository(object):
         Method determineRelativeSizes: returns a list with what the size of very small, small, medium, large and very large methods.
         '''
         if (self.count() < 4):
-            raise ValueError("Repository.determineRelativeSizes: There is no enough number of components")
+            raise ValueError("Repository.determineRelativeSizes:  There is no enough number of components")
         
         #variables 
         normalizedSize = 0
@@ -134,9 +134,9 @@ class Repository(object):
     
     def getRelativeSize(self, Comp=None):
         if len(self.repository) < 4:
-            raise ValueError("Repository.getRelativeSize: There is no enough number of components")
+            raise ValueError("Repository.getRelativeSize:  There is no enough number of components")
         if Comp==None:
-            raise ValueError("Repository.getRelativeSize: Missing a parameter of the component")
+            raise ValueError("Repository.getRelativeSize:  Missing a parameter of the component")
         for comp in self.repository:
             normalizedSize = 0
             avg = 0
@@ -170,7 +170,7 @@ class Repository(object):
         if Comp.getMethodCount != 0:
             sizeComp = Comp.getLocCount() / Comp.getMethodCount()
         else:
-            raise ValueError("Repository.getRelativeSize: The component has 0 methodCount")
+            raise ValueError("Repository.getRelativeSize:  The component has 0 methodCount")
         
         #Relative Size
         vs = int(math.ceil(math.exp(avg - 1.5*stdev)))
@@ -199,20 +199,20 @@ class Repository(object):
             
     def estimateByRelativeSize(self,name=None,methodCount=None,size=None):
         if len(self.repository) < 4:
-            raise ValueError("Repository.estimateByRelativeSize: There is no enough number of components")
+            raise ValueError("Repository.estimateByRelativeSize:  There is no enough number of components")
         if name==None:
-            raise ValueError("Repository.estimateByRelativeSize: The name is missing")
+            raise ValueError("Repository.estimateByRelativeSize:  The name is missing")
         if methodCount==None:
-            raise ValueError("Repository.estimateByRelativeSize: The methodCount is missing")
+            raise ValueError("Repository.estimateByRelativeSize:  The methodCount is missing")
         if size==None:
             #raise ValueError("Repository.estimateByRelativeSize: The size is missing")
             size = "M"
         
         for comp in self.repository:
             if comp.getName()==name:
-                raise ValueError("Repository.estimateByRelativeSize: The name of the component is already in the repository")
+                raise ValueError("Repository.estimateByRelativeSize:  The name of the component is already in the repository")
         if methodCount==0:
-            raise ValueError("Repository.estimateByRelativeSize: MethodCount equal to 0 makes the relative size equal to 0")
+            raise ValueError("Repository.estimateByRelativeSize:  MethodCount equal to 0 makes the relative size equal to 0")
         listSizes = self.determineRelativeSizes()
         relativeSizes = {"VS":listSizes[0], "S":listSizes[1],
                          "M":listSizes[2], "L":listSizes[3],
@@ -222,5 +222,5 @@ class Repository(object):
             componentNew = component.Component(name,methodCount,estimatedSize)
             return componentNew
         else:
-            raise ValueError("Repository.estimateByRelativeSize: size needs to be VS, S, M, L or VL")
+            raise ValueError("Repository.estimateByRelativeSize:  size needs to be VS, S, M, L or VL")
             

@@ -22,7 +22,7 @@ class TestComponent(unittest.TestCase):
             self.fail("incorrect exception was raised") 
     
     def test100_920_ShouldRaiseExceptionOnEmptyStringNameConstructor(self):
-        expectedString = "Component.__init__:"
+        expectedString = "Component.__init__:  "
         try:
             myComponent = Component.Component(name="", methodCount=5, locCount=100)                                                
             self.fail("exception was not raised")                    
@@ -33,7 +33,7 @@ class TestComponent(unittest.TestCase):
             self.fail("incorrect exception was raised")     
 
     def test100_930_ShouldRaiseExceptionOnNonIntMethodCountConstructor(self):
-        expectedString = "Component.__init__:"
+        expectedString = "Component.__init__:  "
         try:
             myComponent = Component.Component(name="C1", methodCount="a", locCount=100)                                                
             self.fail("exception was not raised")                    
@@ -44,7 +44,7 @@ class TestComponent(unittest.TestCase):
             self.fail("incorrect exception was raised")     
     
     def test100_940_ShouldRaiseExceptionOnInvalidMethodCountConstructor(self):
-        expectedString = "Component.__init__:"
+        expectedString = "Component.__init__:  "
         try:
             myComponent = Component.Component(name="C1", methodCount=-1, locCount=100)                                                
             self.fail("exception was not raised")                    
@@ -55,7 +55,7 @@ class TestComponent(unittest.TestCase):
             self.fail("incorrect exception was raised")     
  
     def test100_950_ShouldRaiseExceptionOnNonIntLocCountConstructor(self):
-        expectedString = "Component.__init__:"
+        expectedString = "Component.__init__:  "
         try:
             myComponent = Component.Component(name="C1", methodCount=1, locCount="a")                                                
             self.fail("exception was not raised")                    
@@ -66,7 +66,7 @@ class TestComponent(unittest.TestCase):
             self.fail("incorrect exception was raised")    
     
     def test100_960_ShouldRaiseExceptionOnInvalidLocCountConstructor(self):
-        expectedString = "Component.__init__:"
+        expectedString = "Component.__init__:  "
         try:
             myComponent = Component.Component(name="C1", methodCount=1, locCount=0)                                                
             self.fail("exception was not raised")                    
@@ -77,7 +77,7 @@ class TestComponent(unittest.TestCase):
             self.fail("incorrect exception was raised")    
             
     def test100_970_ShouldRaiseExceptionOnMissingNameConstructor(self):
-        expectedString = "Component.__init__:"
+        expectedString = "Component.__init__:  "
         try:
             myComponent = Component.Component(methodCount=1, locCount=0)                                                
             self.fail("exception was not raised")                    
@@ -88,7 +88,7 @@ class TestComponent(unittest.TestCase):
             self.fail("incorrect exception was raised")    
             
     def test100_980_ShouldRaiseExceptionOnMissingMethodCountConstructor(self):
-        expectedString = "Component.__init__:"
+        expectedString = "Component.__init__:  "
         try:
             myComponent = Component.Component(name="C1", locCount=0)                                                
             self.fail("exception was not raised")                    
@@ -99,7 +99,7 @@ class TestComponent(unittest.TestCase):
             self.fail("incorrect exception was raised")
 
     def test100_960_ShouldRaiseExceptionOnMissingLocCountConstructor(self):
-        expectedString = "Component.__init__:"
+        expectedString = "Component.__init__:  "
         try:
             myComponent = Component.Component(name="C1", methodCount=1)                                                
             self.fail("exception was not raised")                    
@@ -147,7 +147,7 @@ class TestComponent(unittest.TestCase):
         self.assertEquals(size, theComponent.setRelativeSize())
         
     def test500_910_ShouldObjectToBadSize(self):
-        expectedString = "Component.setRelativeSize:"
+        expectedString = "Component.setRelativeSize:  "
         try:
             myComponent = Component.Component("CX", 1, 100)   
             myComponent.setRelativeSize("x")                                             
@@ -159,7 +159,7 @@ class TestComponent(unittest.TestCase):
             self.fail("incorrect exception was raised")
             
     def test500_920_ShouldObjectToBadSizeType(self):
-        expectedString = "Component.setRelativeSize:"
+        expectedString = "Component.setRelativeSize:  "
         try:
             myComponent = Component.Component("CX", 1, 100)   
             myComponent.setRelativeSize(42)                                             
@@ -179,10 +179,10 @@ class TestComponent(unittest.TestCase):
         
             
     def test600_920_ShouldObjectToNoSizeSet(self):
-        expectedString = "Component.getRelativeSize:"
+        expectedString = "Component.getRelativeSize:  "
         try:
             myComponent = Component.Component("CX", 1, 100)   
-            myComponent.getRelativeSize()                                             
+            myComponent.getRelativeSize()                                              
             self.fail("exception was not raised")                    
         except ValueError as raisedException:                                           
             diagnosticString = raisedException.args[0]                                   

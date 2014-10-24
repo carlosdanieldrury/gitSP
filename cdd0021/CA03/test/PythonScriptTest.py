@@ -41,6 +41,12 @@ class TestPythonScript(unittest.TestCase):
         testPythonScript = PythonScript.PythonScript(fileName=testFileName)
         self.assertEquals(list, testPythonScript.extractDesign().__repr__())
         
+    def test100_060_ShouldCountLineOfEmptyFile(self):
+        numberOfLines = 0
+        testFileName = "file.py"
+        testPythonScript = PythonScript.PythonScript(fileName=testFileName)
+        self.assertEquals(numberOfLines, testPythonScript.countLine())
+        
     
         
 

@@ -47,6 +47,11 @@ class TestPythonScript(unittest.TestCase):
         testPythonScript = PythonScript.PythonScript(fileName=testFileName)
         self.assertEquals(numberOfLines, testPythonScript.countLine())
         
+    def test100_070_ShouldReturnEmptyListCompInfo(self):
+        list = '[[], []]'
+        testFileName = "file.py"
+        testPythonScript = PythonScript.PythonScript(fileName=testFileName)
+        self.assertEquals(list, testPythonScript.extractDesign().__repr__())
     
         
 

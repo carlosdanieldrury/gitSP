@@ -82,11 +82,10 @@ class Repository(object):
             raise ValueError("Repository.determineRelativeSizes:  There is no enough number of components")
         
         #variables 
-        normalizedSize = 0
+        normalizedSize = 0.0
 
-        avg = 0
-        stdev = 0
-        numMethodCount = 0
+        avg = 0.0
+        stdev = 0.0
 
         
         for comp in self.repository:
@@ -94,29 +93,28 @@ class Repository(object):
                 pass
             else:
                 try:
-                    normalizedSize = math.log(comp.getLocCount() // comp.getMethodCount())
-                    numMethodCount += comp.getMethodCount()
-                    #avg = avg + comp.getLocCount()
+                    normalizedSize = math.log(comp.getLocCount() / float(comp.getMethodCount()))
                     avg = avg + normalizedSize
                 except:
                     print "Division by 0"
  
         #average    
-        avg = float(avg / self.validCount())
+        avg = avg / self.validCount()
 
-        #avg = math.log(avg / numMethodCount)    
+
             
         for comp in self.repository:
             if (comp.getMethodCount() == 0):
                 pass
             else:
                 try:
-                    normalizedSize = math.log(comp.getLocCount() // comp.getMethodCount())
+                    normalizedSize = math.log(comp.getLocCount() / float(comp.getMethodCount()))
                     stdev = stdev + ((math.pow(normalizedSize - avg, 2))/ (self.validCount() - 1))
                 except:
                     print "Division by 0.."
         #stdev final calculation   
         stdev = math.sqrt(stdev)
+
         
         
         vs = int(math.ceil(math.exp(avg - 2*stdev)))
@@ -147,7 +145,7 @@ class Repository(object):
                     pass
                 else:
                     try:
-                        normalizedSize = math.log(subComp.getLocCount() // subComp.getMethodCount())
+                        normalizedSize = math.log(subComp.getLocCount() / subComp.getMethodCount())
                         avg = avg + normalizedSize
                     except:
                         print "Division by 0"
@@ -160,7 +158,7 @@ class Repository(object):
                     pass
                 else:
                     try:
-                        normalizedSize = math.log(subComp.getLocCount() // subComp.getMethodCount())
+                        normalizedSize = math.log(subComp.getLocCount() / subComp.getMethodCount())
                         stdev = stdev + ((math.pow(normalizedSize - avg, 2))/ (self.validCount() - 1))
                     except:
                         print "Division by 0.."

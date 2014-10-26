@@ -177,7 +177,7 @@ class TestRepository(unittest.TestCase):
         locCounts = [76, 116, 113, 103]
         for i in range(maxCapacity):
             theRepository.addComponent(Component.Component("C"+str(i), methodCounts[i], locCounts[i]))
-        self.assertListEqual([8, 15, 29, 58, 115], theRepository.determineRelativeSizes())        
+        self.assertListEqual([8, 15, 30, 58, 115], theRepository.determineRelativeSizes())        
         
     #600_9xx . . . sad path
     def test600_910_shouldRaiseExceptionOnSmallCapacity(self):  
@@ -258,7 +258,7 @@ class TestRepository(unittest.TestCase):
         sizeList = ["VS", "S", "M", "L","VL"]
         methodCounts = [1, 4, 7, 5]
         locCounts = [76, 116, 113, 103]
-        expectedSizes = [8, 15, 29, 58, 115]
+        expectedSizes = [8, 15, 30, 58, 115]
         for i in range(len(methodCounts)):
             theRepository.addComponent(Component.Component("C"+str(i), methodCounts[i], locCounts[i]))
         newMethodCount = 10

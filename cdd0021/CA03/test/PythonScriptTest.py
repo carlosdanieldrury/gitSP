@@ -68,6 +68,19 @@ class TestPythonScript(unittest.TestCase):
         except Exception as e:
             self.fail("incorrect exception was raised: " + str(e))      
         
+        
+    def test200_020_ShouldRaiseExceptionEmptyString(self):
+        expectedString = "PythonScript.__init__:  "
+        try:
+            testPythonScript = PythonScript.PythonScript("")                                              
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except AssertionError:
+            self.fail("exception was not raised") 
+        except Exception as e:
+            self.fail("incorrect exception was raised: " + str(e))
 
 
 if __name__ == "__main__":

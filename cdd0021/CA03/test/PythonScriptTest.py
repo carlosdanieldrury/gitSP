@@ -120,6 +120,13 @@ class TestPythonScript(unittest.TestCase):
             self.fail("exception was not raised") 
         except Exception as e:
             self.fail("incorrect exception was raised: " + str(e))
+
+# sad ... test comments
+    def test300_010_ShouldCountLinesWithoutComments(self):
+        numberOfLines = 11
+        testFileName = "file2.py"
+        testPythonScript = PythonScript.PythonScript(fileName=testFileName)
+        self.assertEquals(numberOfLines, testPythonScript.countLine())
             
     
 

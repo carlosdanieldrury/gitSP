@@ -17,6 +17,7 @@ class TestPythonScript(unittest.TestCase):
     def test100_010_ShouldConstructorWorkPythonFile(self):
         testPythonScript = PythonScript.PythonScript(fileName="pythonFile.py")
         
+#Methods
     def test100_020_ShouldReceiveNameOfFile(self):
         testFileName = "pythonFile.py"
         testPythonScript = PythonScript.PythonScript(fileName=testFileName)
@@ -53,7 +54,21 @@ class TestPythonScript(unittest.TestCase):
         testPythonScript = PythonScript.PythonScript(fileName=testFileName)
         self.assertEquals(list, testPythonScript.extractDesign().__repr__())
     
+#sad...
+    def test200_010_ShouldRaiseExceptionMissingName(self):
+        expectedString = "PythonScript.__init__:  "
+        try:
+            testPythonScript = PythonScript.PythonScript()                                              
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except AssertionError:
+            self.fail("exception was not raised") 
+        except Exception as e:
+            self.fail("incorrect exception was raised: " + str(e))      
         
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

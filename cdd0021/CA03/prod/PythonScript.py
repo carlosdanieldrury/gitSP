@@ -23,8 +23,12 @@ class PythonScript(object):
         if (fileName==""):
             raise ValueError("PythonScript.__init__:   The name cannot be empty")
         if (isinstance(fileName, basestring)):
-            self.fileName = fileName
-            self.filePath = None
+            auxName = fileName.strip(".")
+            if (auxName.find(".py")>-1):
+                self.fileName = fileName
+                self.filePath = None
+            else:
+                raise ValueError("PythonScript.__init__:   It is not a python file")
         else:
             raise ValueError("PythonScript.__init__:   fileName needs to be a string")
         

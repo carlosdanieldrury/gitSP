@@ -22,8 +22,11 @@ class PythonScript(object):
             raise ValueError("PythonScript.__init__:   Missing the file name")
         if (fileName==""):
             raise ValueError("PythonScript.__init__:   The name cannot be empty")
-        self.fileName = fileName
-        self.filePath = None
+        if (isinstance(fileName, basestring)):
+            self.fileName = fileName
+            self.filePath = None
+        else:
+            raise ValueError("PythonScript.__init__:   fileName needs to be a string")
         
     def getFileName(self):
         return self.fileName

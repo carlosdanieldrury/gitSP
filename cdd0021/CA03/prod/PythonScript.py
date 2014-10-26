@@ -14,10 +14,12 @@ class PythonScript(object):
     '''
 
 
-    def __init__(self, fileName):
+    def __init__(self, fileName=None):
         '''
         Constructor
         '''
+        if (fileName==None):
+            raise ValueError("PythonScript.__init__:   Missing the file name")
         self.fileName = fileName
         self.filePath = None
         

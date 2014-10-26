@@ -46,7 +46,9 @@ class PythonScript(object):
         numLines = 0
         file = open(self.fileName, 'r')
         for line in file:
-            numLines +=1
+            auxLine = line.strip(" ")
+            if auxLine[0] != "#":
+                numLines +=1
         return numLines
     
     def extractDesign(self):

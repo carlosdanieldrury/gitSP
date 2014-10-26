@@ -13,7 +13,6 @@ class PythonScript(object):
     functions as well.
     '''
 
-
     def __init__(self, fileName=None):
         '''
         Constructor
@@ -51,6 +50,33 @@ class PythonScript(object):
                 numLines +=1
         return numLines
     
+    def findClassName(self, line):
+        cont = 6
+        nameClass = ""
+        while line[cont] != "(":
+            tab = line.count(' ')
+            nameClass = nameClass + line[cont]
+            cont += 1
+        
+        return nameClass
+
+    def findNameFunc(self, line):
+        nameFunc = ""
+        cont = 4
+        while line[cont] != "(":
+            nameFunc = nameFunc + line[cont]
+            cont += 1
+        
+        return nameFunc
+
+    def verificationNoCommentDocumentation(self, line):
+        if line:
+            auxLine = line.strip(" ")
+            if ((auxLine[0] != "#") and (auxLine.find("'''") == -1)):
+                return True
+        return False
+
+
     def extractDesign(self):
         file = open(self.fileName, 'r')
         comp = "class"
@@ -60,39 +86,30 @@ class PythonScript(object):
         listFunc = []
         numSpaces = 0
  
-        
         line = file.readline()
-             
             
         while 1:
             
             tab = line.count("\t")
 
             if (line[0:5]==comp):
-
-                cont = 6
-                nameClass = ""
-                methodCount = 0
                 locCount = 0
-                while line[cont] != "(":
-                    tab = line.count(' ')
-                    nameClass = nameClass + line[cont]
-                    cont += 1
+                methodCount = 0
+                nameClass = self.findClassName(line)
 
                 line = file.readline()
-                #line = line.replace(" ","")
-                locCount += 1
+                if (self.verificationNoCommentDocumentation(line)):
+                        locCount += 1
                 
                 while 1:
                     tab = line.count("\t")
                     line = line.strip()
                     if (line[0:3]==func):
-                    #if line.find(func)>-1:
                         methodCount += 1
-                    line = file.readline()    
-                    locCount += 1
+                    line = file.readline()
+                    if (self.verificationNoCommentDocumentation(line)):
+                        locCount += 1
 
-                    
                     if ((line[0:5]==comp)or ((line[0:3]==func) and (tab==0))):
                         break
 
@@ -100,30 +117,28 @@ class PythonScript(object):
                 listComp.append(newComponent)
             else:
                 if (line[0:3]==func):
-                    nameFunc = ""
                     locCount = 0
                     methodCount = 1
-                    cont = 4
-                    while line[cont] != "(":
-                        nameFunc = nameFunc + line[cont]
-                        cont += 1
+                    nameFunc = self.findNameFunc(line)
 
                     line = file.readline()
-                    locCount += 1
+                    if (self.verificationNoCommentDocumentation(line)):
+                        locCount += 1
                     
                     while 1:
                         tab = line.count("\t")
                         line = line.strip()
                         if (line[0:3]==func):
-                        #if line.find(func)>-1:
                             methodCount += 1
                         line = file.readline()    
                         locCount += 1
 
-                        if not line:
-                            break
                         if ((line[0:5]==comp) or ((line[0:3]==func) and (tab==0))):
                             break
+
+                        if not line:
+                            break
+                        
                     
                     newFunc = Component.Component(nameFunc, methodCount, locCount)
                     listFunc.append(newFunc)

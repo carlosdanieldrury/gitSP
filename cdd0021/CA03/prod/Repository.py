@@ -83,11 +83,9 @@ class Repository(object):
         
         #variables 
         normalizedSize = 0.0
-
         avg = 0.0
         stdev = 0.0
 
-        
         for comp in self.repository:
             if (comp.getMethodCount() == 0):
                 pass
@@ -101,8 +99,6 @@ class Repository(object):
         #average    
         avg = avg / self.validCount()
 
-
-            
         for comp in self.repository:
             if (comp.getMethodCount() == 0):
                 pass
@@ -115,7 +111,6 @@ class Repository(object):
         #stdev final calculation   
         stdev = math.sqrt(stdev)
 
-        
         
         vs = int(math.ceil(math.exp(avg - 2*stdev)))
         
@@ -130,6 +125,30 @@ class Repository(object):
         return [vs,s,m,l,vl]
     
     
+
+    def calculationRelativeSize(self, avg, stdev, sizeComp):
+        '''
+            Method to help getRelativeSize - With average, stdev and the size of the component (lines of code),
+            it is possible estimate what the relative size of the component.
+        '''
+        size = ""
+        vs = int(math.ceil(math.exp(avg - 1.5 * stdev)))
+        m1 = int(math.ceil(math.exp(avg - 0.5 * stdev)))
+        m2 = int(math.ceil(math.exp(avg + 0.5 * stdev)))
+        vl = int(math.ceil(math.exp(avg + 2 * stdev)))
+        if sizeComp <= vs:
+            size = "VS"
+        if ((sizeComp > vs) and (sizeComp <= m1)):
+            size = "S"
+        if ((sizeComp > m1) and (sizeComp <= m2)):
+            size = "M"
+        if ((sizeComp > m2) and (sizeComp <= vl)):
+            size = "L"
+        if (sizeComp > vl):
+            size = "VL"
+        
+        return size
+
     def getRelativeSize(self, Comp=None):
         if len(self.repository) < 4:
             raise ValueError("Repository.getRelativeSize:  There is no enough number of components")
@@ -145,7 +164,7 @@ class Repository(object):
                     pass
                 else:
                     try:
-                        normalizedSize = math.log(subComp.getLocCount() / subComp.getMethodCount())
+                        normalizedSize = math.log(subComp.getLocCount() / float(subComp.getMethodCount()))
                         avg = avg + normalizedSize
                     except:
                         print "Division by 0"
@@ -158,7 +177,7 @@ class Repository(object):
                     pass
                 else:
                     try:
-                        normalizedSize = math.log(subComp.getLocCount() / subComp.getMethodCount())
+                        normalizedSize = math.log(subComp.getLocCount() / float(subComp.getMethodCount()))
                         stdev = stdev + ((math.pow(normalizedSize - avg, 2))/ (self.validCount() - 1))
                     except:
                         print "Division by 0.."
@@ -171,28 +190,8 @@ class Repository(object):
             raise ValueError("Repository.getRelativeSize:  The component has 0 methodCount")
         
         #Relative Size
-        vs = int(math.ceil(math.exp(avg - 1.5*stdev)))
-        if sizeComp <= vs:
-            comp.setRelativeSize("VS")
+        Comp.setRelativeSize(self.calculationRelativeSize(avg, stdev, sizeComp))
         
-
-        m1 = int(math.ceil(math.exp(avg-0.5*stdev)))
-        m2 = int(math.ceil(math.exp(avg+0.5*stdev)))
-        if ((sizeComp > vs) and (sizeComp <= m1)):
-            Comp.setRelativeSize("S")
-            
-        
-        
-        if ((sizeComp>m1) and (sizeComp<=m2)):
-            Comp.setRelativeSize("M")
-
-        vl = int(math.ceil(math.exp(avg + 2*stdev)))
-        if ((sizeComp>m2) and (sizeComp<=vl)):
-            Comp.setRelativeSize("L")
-            
-        if (sizeComp>vl):
-            Comp.setRelativeSize("VL")
-                
         return Comp.getRelativeSize()
             
     def estimateByRelativeSize(self,name=None,methodCount=None,size=None):

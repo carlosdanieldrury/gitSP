@@ -20,6 +20,8 @@ class PythonScript(object):
         '''
         if (fileName==None):
             raise ValueError("PythonScript.__init__:   Missing the file name")
+        if (fileName==""):
+            raise ValueError("PythonScript.__init__:   The name cannot be empty")
         self.fileName = fileName
         self.filePath = None
         

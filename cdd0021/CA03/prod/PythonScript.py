@@ -47,7 +47,7 @@ class PythonScript(object):
         file = open(self.fileName, 'r')
         for line in file:
             auxLine = line.strip(" ")
-            if auxLine[0] != "#":
+            if ((auxLine[0] != "#") and (auxLine.find("'''")==-1)):
                 numLines +=1
         return numLines
     

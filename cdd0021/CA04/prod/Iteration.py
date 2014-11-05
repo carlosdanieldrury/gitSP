@@ -12,10 +12,13 @@ class Iteration(object):
     '''
 
 
-    def __init__(self, effort, plannedVelocity):
+    def __init__(self, effort=None, plannedVelocity=None):
         '''
         Constructor
         '''
+        if (effort==None) or (plannedVelocity==None):
+            raise ValueError("Iteration.__init__:  The parameters are incorrect")
+        
         if not isInt(effort):
             raise ValueError("Iteration.__init__:  The effort value needs to be an integer")
         if effort <= 0:

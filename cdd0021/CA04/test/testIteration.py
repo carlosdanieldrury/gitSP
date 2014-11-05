@@ -92,6 +92,16 @@ class Test(unittest.TestCase):
         except:
             self.fail("incorrect exception was raised")
             
+    def test200_030_ShouldRaiseExceptionNoParameters(self):
+        expectedString = "Iteration.__init__:  "
+        try:
+            myIteration = Iteration.Iteration()                                          
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised")
     
         
          

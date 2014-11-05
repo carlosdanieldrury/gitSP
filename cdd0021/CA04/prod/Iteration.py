@@ -19,3 +19,6 @@ class Iteration(object):
     
     def getEffort(self):
         return self.effort
+    
+    def getPV(self):
+        return self.plannedVelocity

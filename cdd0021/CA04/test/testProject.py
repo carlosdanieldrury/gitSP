@@ -16,7 +16,7 @@ class Test(unittest.TestCase):
         
     def test100_020_ShouldAddIteration(self):
         myProject = Project.Project()
-        myProject.add(iteration = Iteration.Iteration(120,3))
+        self.assertEquals(myProject.add(iteration = Iteration.Iteration(120,3)), 1)
 
 
 if __name__ == "__main__":

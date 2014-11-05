@@ -20,6 +20,10 @@ class Test(unittest.TestCase):
         myIteration = Iteration.Iteration(effort=120, plannedVelocity=3)
         self.assertEquals(myIteration.getEffort(), 120)
 
+    def test100_030_ShouldGetPV(self):
+        myIteration = Iteration.Iteration(effort=120, plannedVelocity=3)
+        self.assertEquals(myIteration.getPV(), 3)
+         
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test']

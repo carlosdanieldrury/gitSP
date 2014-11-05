@@ -57,6 +57,18 @@ class Test(unittest.TestCase):
             self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
         except:
             self.fail("incorrect exception was raised")       
+            
+    def test200_020_ShouldRaiseExceptionInvalidPV(self):
+        expectedString = "Iteration.__init__:  "
+        try:
+            myIteration = Iteration.Iteration(120, 0)                                          
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised")
+        
          
 
 if __name__ == "__main__":

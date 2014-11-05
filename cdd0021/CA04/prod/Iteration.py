@@ -16,3 +16,6 @@ class Iteration(object):
         '''
         self.effort = effort
         self.plannedVelocity = plannedVelocity
+    
+    def getEffort(self):
+        return self.effort

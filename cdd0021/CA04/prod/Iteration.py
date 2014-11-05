@@ -3,6 +3,8 @@ Created on Nov 4, 2014
 
 @author: drury
 '''
+from optparse import isbasestring
+from Crypto.Protocol.AllOrNothing import isInt
 
 class Iteration(object):
     '''
@@ -14,6 +16,8 @@ class Iteration(object):
         '''
         Constructor
         '''
+        if not isInt(effort):
+            raise ValueError("Iteration.__init__:  The effort value needs to be an integer")
         if effort <= 0:
             raise ValueError("Iteration.__init__:  The effort value needs to be grand than 0")
         

@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
     def test200_010_ShouldRaiseExceptionInvalidEffort(self):
         expectedString = "Iteration.__init__:  "
         try:
-            myIteration = Iteration(0,3)                                          
+            myIteration = Iteration.Iteration(0,3)                                          
             self.fail("exception was not raised")                    
         except ValueError as raisedException:                                           
             diagnosticString = raisedException.args[0]                                   

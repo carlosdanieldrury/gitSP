@@ -14,6 +14,9 @@ class Iteration(object):
         '''
         Constructor
         '''
+        if effort <= 0:
+            raise ValueError("Iteration.__init__:  The effort value needs to be grand than 0")
+        
         self.effort = effort
         self.plannedVelocity = plannedVelocity
     

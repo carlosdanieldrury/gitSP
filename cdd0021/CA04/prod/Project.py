@@ -19,3 +19,6 @@ class Project(object):
     def add(self, iteration):
         self.iterationList.append(iteration)
         return self.iterationList.index(iteration) + 1
+    
+    def getIterationCount(self):
+        return len(self.iterationList)

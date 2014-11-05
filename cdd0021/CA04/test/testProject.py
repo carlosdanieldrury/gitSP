@@ -21,7 +21,8 @@ class Test(unittest.TestCase):
     def test100_030_ShouldGetIterationCount(self):
         myIteration = Iteration.Iteration(30,4)
         myProject = Project.Project()
-        self.assertEquals(myProject.getIterationCount(myIteration), 1)
+        myProject.add(myIteration)
+        self.assertEquals(myProject.getIterationCount(), 1)
 
 
 if __name__ == "__main__":

@@ -20,7 +20,8 @@ class Iteration(object):
             raise ValueError("Iteration.__init__:  The effort value needs to be an integer")
         if effort <= 0:
             raise ValueError("Iteration.__init__:  The effort value needs to be grand than 0")
-        
+        if not isInt(plannedVelocity):
+            raise ValueError("Iteration.__init__:  The plannedVelocity value needs to be an integer")
         if plannedVelocity <= 0:
             raise ValueError("Iteration.__init__:  The plannedVelocity value needs to be grand than 0")
         

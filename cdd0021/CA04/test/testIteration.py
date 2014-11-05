@@ -16,6 +16,10 @@ class Test(unittest.TestCase):
         #myIteration = Iteration.Iteration(effort=120, plannedVelocity=3)
         self.assertIsInstance(Iteration.Iteration(effort=120, plannedVelocity=3), Iteration.Iteration)
 
+    def test100_020_ShouldGetEffort(self):
+        myIteration = Iteration.Iteration(effort=120, plannedVelocity=3)
+        self.assertEquals(myIteration.getEffort(), 120)
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test']

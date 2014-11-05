@@ -13,7 +13,8 @@ class Test(unittest.TestCase):
 #Constructor
 #happy
     def test100_010_ShouldConstructIteration(self):
-        myIteration = Iteration.Iteration(effort=120, plannedVelocity=3)
+        #myIteration = Iteration.Iteration(effort=120, plannedVelocity=3)
+        self.assertIsInstance(Iteration.Iteration(effort=120, plannedVelocity=3), Iteration.Iteration)
 
 
 if __name__ == "__main__":

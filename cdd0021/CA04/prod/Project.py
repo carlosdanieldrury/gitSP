@@ -16,7 +16,9 @@ class Project(object):
         '''
         self.iterationList = []
         
-    def add(self, iteration):
+    def add(self, iteration=None):
+        if iteration==None:
+            raise ValueError("Project.add:  The parameter iteration is missing")
         self.iterationList.append(iteration)
         return self.iterationList.index(iteration) + 1
     

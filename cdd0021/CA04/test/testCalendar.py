@@ -33,7 +33,12 @@ class Test(unittest.TestCase):
         myCal.add(5, 120)
         self.assertEquals(myCal.getLength(), 5)
         
-
+    def test100_050_SouldRetrieveDay(self):
+        myCal = Calendar.Calendar()
+        myCal.add(2, 60)
+        myCal.add(5, 120)
+        self.assertEquals(myCal.get(day=2), 60)
+        
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

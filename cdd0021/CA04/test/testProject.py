@@ -23,6 +23,13 @@ class Test(unittest.TestCase):
         myProject = Project.Project()
         myProject.add(myIteration)
         self.assertEquals(myProject.getIterationCount(), 1)
+    
+    def test100_040_ShouldGetIteration(self):
+        myIteration = Iteration.Iteration(30,4)
+        myProject = Project.Project()
+        myProject.add(myIteration)
+        self.assertEquals(myProject.getIteration(iterationNumber=1), "<Iteration(30,4)>")
+         
 
 
 if __name__ == "__main__":

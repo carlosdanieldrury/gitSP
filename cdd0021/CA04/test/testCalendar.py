@@ -27,6 +27,13 @@ class Test(unittest.TestCase):
         effort = 120
         self.assertEquals(myCalendar.add(day,effort), 180)
 
+    def test100_040_ShouldGetLength(self):
+        myCal = Calendar.Calendar()
+        myCal.add(1, 60)
+        myCal.add(5, 120)
+        self.assertEquals(myCal.getLength(), 5)
+        
+
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

@@ -10,4 +10,12 @@ class Calendar(object):
     '''
     
     def __init__(self):
-        pass
+        self.dayEffortList = {}
+    
+    def add(self, day, effort):
+        self.dayEffortList.update({day:effort})
+        sumEffort = 0
+        for dayEffort in self.dayEffortList.values():
+            sumEffort += dayEffort
+            
+        return sumEffort

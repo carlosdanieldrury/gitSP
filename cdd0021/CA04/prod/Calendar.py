@@ -13,6 +13,8 @@ class Calendar(object):
         self.dayEffortList = {}
     
     def add(self, day, effort):
+        if (day <= 0):
+            raise ValueError("Calendar.add:  The value of day needs to be grand than 0")
         self.dayEffortList.update({day:effort})
         sumEffort = 0
         for dayEffort in self.dayEffortList.values():

@@ -30,7 +30,11 @@ class Test(unittest.TestCase):
         myProject.add(myIteration)
         self.assertEquals(myProject.getIteration(iterationNumber=1), "<Iteration(30,4)>")
          
-
+    def test100_050_ShouldGetEffortProject(self):
+        myIteration = Iteration.Iteration(30,4)
+        myProject = Project.Project()
+        myProject.add(myIteration)
+        self.assertEquals(myProject.getEffort(), 30)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test100_010_ShouldConstructProject']

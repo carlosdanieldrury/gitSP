@@ -10,7 +10,7 @@ import CA04.prod.Iteration as Iteration
 
 class Test(unittest.TestCase):
 
-
+#Happy
     def test100_010_ShouldConstructProject(self):
         self.assertIsInstance(Project.Project(), Project.Project)
         
@@ -41,6 +41,22 @@ class Test(unittest.TestCase):
         myProject = Project.Project()
         myProject.add(myIteration)
         self.assertEquals(myProject.getPV(), 4)
+
+#sad
+    def test200_010_ShouldRaiseExceptionGetIterationInvalid(self):
+        myIteration = Iteration.Iteration(100,10)
+        myProject = Project.Project()
+        myProject.add(myIteration)
+        expectedString = "Project.__init__:  "
+        try:
+            myProject.getIteration(42)                                         
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised") 
+        
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test100_010_ShouldConstructProject']

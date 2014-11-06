@@ -35,3 +35,4 @@ class Calendar(object):
         if self.dayEffortList.get(day)==None:
             return 0
         return self.dayEffortList.get(day)
+    

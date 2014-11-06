@@ -43,4 +43,8 @@ class Project(object):
             sumPV += iteration.getPV()
             
         return sumPV
+    
+
+    def getIterationList(self):
+        return self.iterationList
         

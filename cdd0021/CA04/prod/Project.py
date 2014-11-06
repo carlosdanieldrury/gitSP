@@ -32,4 +32,11 @@ class Project(object):
             sumEffort += iteration.getEffort()
             
         return sumEffort
+    
+    def getPV(self):
+        sumPV = 0
+        for iteration in self.iterationList:
+            sumPV += iteration.getPV()
+            
+        return sumPV
         

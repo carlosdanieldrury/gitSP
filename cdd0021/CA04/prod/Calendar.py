@@ -16,7 +16,7 @@ class Calendar(object):
     def add(self, day, effort):
         if ((day <= 0) or (not isInt(day))):
             raise ValueError("Calendar.add:  The value of day needs to be an integer grand than 0")
-        if (effort<0):
+        if ((effort<0) or (not isInt(effort))):
             raise ValueError("Calendar.add:  The value of effort needs to be equal or gran than 0")
         self.dayEffortList.update({day:effort})
         sumEffort = 0

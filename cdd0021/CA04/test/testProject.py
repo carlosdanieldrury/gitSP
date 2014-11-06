@@ -67,7 +67,35 @@ class Test(unittest.TestCase):
             diagnosticString = raisedException.args[0]                                   
             self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
         except:
-            self.fail("incorrect exception was raised")        
+            self.fail("incorrect exception was raised")   
+            
+    def test200_030_ShouldRaiseExceptionGetIterationInvalidValue(self):
+        myIteration = Iteration.Iteration(100,10)
+        myProject = Project.Project()
+        myProject.add(myIteration)
+        expectedString = "Project.getIteration:  "
+        try:
+            myProject.getIteration(0)                                        
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised")   
+            
+    def test200_040_ShouldRaiseExceptionGetIterationString(self):
+        myIteration = Iteration.Iteration(100,10)
+        myProject = Project.Project()
+        myProject.add(myIteration)
+        expectedString = "Project.getIteration:  "
+        try:
+            myProject.getIteration("X")                                        
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised")     
 
 
 

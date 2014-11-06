@@ -83,7 +83,18 @@ class Test(unittest.TestCase):
         except:
             self.fail("incorrect exception was raised") 
         
-                
+    def test200_040_ShouldRaiseExceptionInvalidDay(self):
+        myCal = Calendar.Calendar()
+        expectedString = "Calendar.add:  "
+        try:
+            myCal.add("X",30)                                              
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised")             
+    
     
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

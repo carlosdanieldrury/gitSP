@@ -47,7 +47,7 @@ class Test(unittest.TestCase):
         myIteration = Iteration.Iteration(100,10)
         myProject = Project.Project()
         myProject.add(myIteration)
-        expectedString = "Project.__init__:  "
+        expectedString = "Project.getIteration:  "
         try:
             myProject.getIteration(42)                                         
             self.fail("exception was not raised")                    

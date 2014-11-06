@@ -24,6 +24,8 @@ class Project(object):
         return len(self.iterationList)
     
     def getIteration(self, iterationNumber):
+        if not ((iterationNumber>0) and (iterationNumber<=len(self.iterationList))):
+            raise ValueError("Project.getIteration:  Invalid Value for iterationNumber")
         return self.iterationList[iterationNumber-1].__str__()
     
     def getEffort(self):

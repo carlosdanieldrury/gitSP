@@ -31,3 +31,12 @@ class Schedule(object):
         return numDays
     
         
+    def getBurnDown(self, day):
+        sumEffort = 0
+        numDays = 0
+        for iteration in self.project.getIterationList():
+            sumEffort += iteration.getEffort()
+        while (numDays<day):
+            sumEffort -= self.calendar.get(numDays+1)
+            numDays += 1
+        return sumEffort

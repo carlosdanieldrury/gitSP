@@ -3,6 +3,7 @@ Created on Nov 5, 2014
 
 @author: drury
 '''
+from Crypto.Protocol.AllOrNothing import isInt
 
 class Calendar(object):
     '''
@@ -28,7 +29,9 @@ class Calendar(object):
         return max(self.dayEffortList.keys())
     
     def get(self, day):
+        if not isInt(day):
+            raise ValueError("Calendar.get:  It is not a valid value for day")
         #if (day>0) and (day<=self.getLength()):
-            if self.dayEffortList.get(day)==None:
-                return 0
-            return self.dayEffortList.get(day)
+        if self.dayEffortList.get(day)==None:
+            return 0
+        return self.dayEffortList.get(day)

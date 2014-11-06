@@ -19,3 +19,6 @@ class Calendar(object):
             sumEffort += dayEffort
             
         return sumEffort
+    
+    def getLength(self):
+        return max(self.dayEffortList.keys())

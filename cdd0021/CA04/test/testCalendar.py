@@ -93,7 +93,19 @@ class Test(unittest.TestCase):
             diagnosticString = raisedException.args[0]                                   
             self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
         except:
-            self.fail("incorrect exception was raised")             
+            self.fail("incorrect exception was raised") 
+    
+    def test200_050_ShouldRaiseExceptionInvalidEffort(self):
+        myCal = Calendar.Calendar()
+        expectedString = "Calendar.add:  "
+        try:
+            myCal.add(1,"X")                                              
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised")              
     
     
 if __name__ == "__main__":

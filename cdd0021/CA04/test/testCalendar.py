@@ -18,6 +18,14 @@ class Test(unittest.TestCase):
         day = 1
         effort = 60
         self.assertEquals(myCalendar.add(day,effort), 60)
+        
+    
+    def test100_030_ShouldAddAnotherDayEffort(self):
+        myCalendar = Calendar.Calendar()
+        myCalendar.add(1,60)
+        day = 5
+        effort = 120
+        self.assertEquals(myCalendar.add(day,effort), 180)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

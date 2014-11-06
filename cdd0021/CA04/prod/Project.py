@@ -25,4 +25,11 @@ class Project(object):
     
     def getIteration(self, iterationNumber):
         return self.iterationList[iterationNumber-1].__str__()
+    
+    def getEffort(self):
+        sumEffort = 0
+        for iteration in self.iterationList:
+            sumEffort += iteration.getEffort()
+            
+        return sumEffort
         

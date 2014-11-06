@@ -36,3 +36,6 @@ class Iteration(object):
     
     def getPV(self):
         return self.plannedVelocity
+    
+    def __str__(self, *args, **kwargs):
+        return "<Iteration(%s,%s)>" % (self.effort, self.plannedVelocity)

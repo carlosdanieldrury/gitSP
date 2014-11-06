@@ -22,3 +22,7 @@ class Project(object):
     
     def getIterationCount(self):
         return len(self.iterationList)
+    
+    def getIteration(self, iterationNumber):
+        return self.iterationList[iterationNumber-1].__str__()
+        

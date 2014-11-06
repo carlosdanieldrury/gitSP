@@ -35,6 +35,12 @@ class Test(unittest.TestCase):
         myProject = Project.Project()
         myProject.add(myIteration)
         self.assertEquals(myProject.getEffort(), 30)
+        
+    def test100_060_ShouldGetPVProject(self):
+        myIteration = Iteration.Iteration(30,4)
+        myProject = Project.Project()
+        myProject.add(myIteration)
+        self.assertEquals(myProject.getPV(), 4)
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test100_010_ShouldConstructProject']

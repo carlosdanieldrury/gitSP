@@ -22,3 +22,7 @@ class Calendar(object):
     
     def getLength(self):
         return max(self.dayEffortList.keys())
+    
+    def get(self, day):
+        if (day>0) and (day<=self.getLength()):
+            return self.dayEffortList.get(day)

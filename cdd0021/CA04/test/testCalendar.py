@@ -9,7 +9,7 @@ import CA04.prod.Calendar as Calendar
 
 class Test(unittest.TestCase):
 
-
+#happy
     def test100_010_ShouldConstructCalendar(self):
         self.assertIsInstance(Calendar.Calendar(), Calendar.Calendar)
 
@@ -45,6 +45,22 @@ class Test(unittest.TestCase):
         myCal.add(5, 120)
         self.assertEquals(myCal.get(day=4), 0)
         
+        
+#sad
+    def test200_010_ShouldRaiseExceptionInvalidDay(self):
+        myCal = Calendar.Calendar()
+        expectedString = "Calendar.add:  "
+        try:
+            myCal.add(0,30)                                              
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised") 
+        
+                
+    
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

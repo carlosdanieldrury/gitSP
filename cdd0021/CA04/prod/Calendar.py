@@ -24,7 +24,7 @@ class Calendar(object):
         return max(self.dayEffortList.keys())
     
     def get(self, day):
-        if (day>0) and (day<=self.getLength()):
+        #if (day>0) and (day<=self.getLength()):
             if self.dayEffortList.get(day)==None:
                 return 0
             return self.dayEffortList.get(day)

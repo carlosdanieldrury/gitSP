@@ -47,6 +47,23 @@ class Test(unittest.TestCase):
         myCal.add(6, 90)
         mySched = Schedule.Schedule(myProject,myCal)
         self.assertEquals(mySched.getLastDay(), 5)
+        
+    def test100_040_ShouldReturnBurnDown(self):
+        iteration1 = Iteration.Iteration(30, 1)
+        iteration2 = Iteration.Iteration(60, 3)
+        myProject = Project.Project()
+        myProject.add(iteration1)
+        myProject.add(iteration2)
+        myCal = Calendar.Calendar()
+        myCal.add(1, 10)
+        myCal.add(2, 0)
+        myCal.add(3, 30)
+        myCal.add(4, 30)
+        myCal.add(5, 60)
+        myCal.add(6, 90)
+        mySched = Schedule.Schedule(myProject,myCal)
+        self.assertEquals(mySched.getBurnDown(day=3), 50)
+        
 
 
 

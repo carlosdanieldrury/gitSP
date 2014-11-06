@@ -29,7 +29,7 @@ class Test(unittest.TestCase):
 
     def test100_040_ShouldGetLength(self):
         myCal = Calendar.Calendar()
-        myCal.add(1, 60)
+        myCal.add(2, 60)
         myCal.add(5, 120)
         self.assertEquals(myCal.getLength(), 5)
         
@@ -38,6 +38,12 @@ class Test(unittest.TestCase):
         myCal.add(2, 60)
         myCal.add(5, 120)
         self.assertEquals(myCal.get(day=2), 60)
+        
+    def test100_060_SouldRetrieveDayNoEffort(self):
+        myCal = Calendar.Calendar()
+        myCal.add(2, 60)
+        myCal.add(5, 120)
+        self.assertEquals(myCal.get(day=4), 0)
         
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

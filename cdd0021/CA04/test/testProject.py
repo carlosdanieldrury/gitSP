@@ -57,6 +57,19 @@ class Test(unittest.TestCase):
         except:
             self.fail("incorrect exception was raised") 
         
+    def test200_020_ShouldRaiseExceptionAddNoParam(self):
+        myProject = Project.Project()
+        expectedString = "Project.add:  "
+        try:
+            myProject.add()                                         
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised")        
+
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test100_010_ShouldConstructProject']

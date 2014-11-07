@@ -40,3 +40,18 @@ class Schedule(object):
             sumEffort -= self.calendar.get(numDays+1)
             numDays += 1
         return sumEffort
+    
+    def getPV(self,day):
+        sumEffort = 0
+        numDays = 0
+        remainingDays = self.getLastDay()
+        for iteration in self.project.getIterationList():
+            sumEffort += iteration.getEffort()
+        while (numDays<day):
+            sumEffort -= self.calendar.get(numDays+1)
+            numDays += 1
+            remainingDays -= 1
+            if ((numDays==day) and (sumEffort > self.calendar.get(day))):
+                remainingDays +=1
+        return remainingDays
+        

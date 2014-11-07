@@ -78,7 +78,7 @@ class Test(unittest.TestCase):
         myCal.add(5, 60)
         myCal.add(6, 90)
         mySched = Schedule.Schedule(myProject,myCal)
-        self.assertEquals(mySched.PV(day=3), 3)
+        self.assertEquals(mySched.getPV(day=3), 3)
         
 
 

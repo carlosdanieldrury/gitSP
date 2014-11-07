@@ -15,6 +15,13 @@ class Test(unittest.TestCase):
     def test100_010_ShouldConstructSchedule(self):
         myCalendar = Calendar.Calendar()
         myProject = Project.Project()
+        iteration1 = Iteration.Iteration(30, 1)
+        myProject = Project.Project()
+        myProject.add(iteration1)
+        myCalendar = Calendar.Calendar()
+        myCalendar.add(1, 10)
+        myCalendar.add(2, 0)
+        myCalendar.add(3, 30)
         self.assertIsInstance(Schedule.Schedule(project=myProject, calendar=myCalendar), Schedule.Schedule)
         
     def test100_020_ShouldConstructScheduleOtherValues(self):

@@ -36,3 +36,8 @@ class Calendar(object):
             return 0
         return self.dayEffortList.get(day)
     
+    def getTotalEffort(self):
+        sumEffort = 0
+        for dayEffort in self.dayEffortList.values():
+            sumEffort += dayEffort
+        return sumEffort

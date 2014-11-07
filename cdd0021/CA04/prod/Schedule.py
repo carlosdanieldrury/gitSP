@@ -17,6 +17,14 @@ class Schedule(object):
         '''
         Constructor
         '''
+        if ((project.getEffort()==0) or (calendar.getTotalEffort==0)):
+            raise ValueError("Schedule.__init__:  The calendar/project needs to have sufficient days/effort to create an instance")
+        sumEffort = project.getEffort()
+        sumEffortDaysCalendar = calendar.getTotalEffort()
+
+        if (sumEffort > sumEffortDaysCalendar):
+            raise ValueError("Schedule.__init__:  The calendar needs to have sufficient days to execute the project")
+        
         self.project = project
         self.calendar = calendar
         

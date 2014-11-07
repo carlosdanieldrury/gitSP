@@ -6,6 +6,7 @@ Created on Nov 6, 2014
 import Iteration as Iteration
 import Project as Project
 import Calendar as Calendar
+from __builtin__ import int
 
 class Schedule(object):
     '''
@@ -40,6 +41,8 @@ class Schedule(object):
     
         
     def getBurnDown(self, day):
+        if not isinstance(day, int):
+            raise ValueError("Schedule.getBurnDown:  The value of day needs to be integer")
         if ((day<1) or (day>self.calendar.getLength())):
             raise ValueError("Schedule.getBurnDown:  The value of day is out of the limit")
         sumEffort = 0

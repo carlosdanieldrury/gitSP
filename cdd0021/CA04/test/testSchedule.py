@@ -80,7 +80,24 @@ class Test(unittest.TestCase):
         mySched = Schedule.Schedule(myProject,myCal)
         self.assertEquals(mySched.getPV(day=3), 3)
         
-
+#sad
+    def test200_010_ShouldRaiseExceptionNoSufficientDays(self):
+        iteration1 = Iteration.Iteration(30, 1)
+        iteration2 = Iteration.Iteration(60, 3)
+        myProject = Project.Project()
+        myProject.add(iteration1)
+        myProject.add(iteration2)
+        myCal = Calendar.Calendar()
+        myCal.add(1, 10)
+        expectedString = "Schedule.__init__:"
+        try:
+            mySched = Schedule.Schedule(myProject,myCal)                                                
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised") 
 
 
 if __name__ == "__main__":

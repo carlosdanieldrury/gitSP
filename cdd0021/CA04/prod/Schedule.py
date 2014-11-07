@@ -14,10 +14,12 @@ class Schedule(object):
     '''
 
 
-    def __init__(self, project, calendar):
+    def __init__(self, project=None, calendar=None):
         '''
         Constructor
         '''
+        if ((project==None) or (calendar==None)):
+            raise ValueError("Schedule.__init__:  It is missing parameter(s)")
         if (not isinstance(project, Project.Project)):
             raise ValueError("Schedule.__init__:  Invalid instance for Project")
         if (not isinstance(calendar, Calendar.Calendar)):

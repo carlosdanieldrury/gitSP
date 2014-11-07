@@ -40,6 +40,8 @@ class Schedule(object):
     
         
     def getBurnDown(self, day):
+        if ((day<1) or (day>self.calendar.getLength())):
+            raise ValueError("Schedule.getBurnDown:  The value of day is out of the limit")
         sumEffort = 0
         numDays = 0
         for iteration in self.project.getIterationList():

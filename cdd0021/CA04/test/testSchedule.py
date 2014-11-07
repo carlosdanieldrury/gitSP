@@ -130,6 +130,30 @@ class Test(unittest.TestCase):
             self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
         except:
             self.fail("incorrect exception was raised") 
+            
+    def test200_021_ShouldRaiseExceptionInvalidBurnDown(self):
+        iteration1 = Iteration.Iteration(30, 1)
+        iteration2 = Iteration.Iteration(60, 3)
+        myProject = Project.Project()
+        myProject.add(iteration1)
+        myProject.add(iteration2)
+        myCal = Calendar.Calendar()
+        myCal.add(1, 10)
+        myCal.add(2, 0)
+        myCal.add(3, 30)
+        myCal.add(4, 30)
+        myCal.add(5, 60)
+        myCal.add(6, 90)
+        mySched = Schedule.Schedule(myProject,myCal)
+        expectedString = "Schedule.getBurnDown:  "
+        try:
+            mySched.getBurnDown(3.5)                                               
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised") 
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.test100_010_ShouldConstructSchedule']

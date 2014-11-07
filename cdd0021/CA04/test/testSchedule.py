@@ -169,7 +169,7 @@ class Test(unittest.TestCase):
         myCal.add(5, 60)
         myCal.add(6, 90)
         mySched = Schedule.Schedule(myProject,myCal)
-        expectedString = "Schedule.getBurnDown:  "
+        expectedString = "Schedule.getPV:  "
         try:
             mySched.getPV("a")                                        
             self.fail("exception was not raised")                    

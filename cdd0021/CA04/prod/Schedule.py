@@ -55,6 +55,8 @@ class Schedule(object):
         return sumEffort
     
     def getPV(self,day):
+        if not isinstance(day, int):
+            raise ValueError("Schedule.getPV:  The value of day needs to be integer")
         sumEffort = 0
         numDays = 0
         remainingDays = self.getLastDay()

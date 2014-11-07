@@ -11,7 +11,7 @@ import CA04.prod.Iteration as Iteration
 
 class Test(unittest.TestCase):
 
-
+#happy
     def test100_010_ShouldConstructSchedule(self):
         myCalendar = Calendar.Calendar()
         myProject = Project.Project()

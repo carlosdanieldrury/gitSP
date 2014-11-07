@@ -178,6 +178,24 @@ class Test(unittest.TestCase):
             self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
         except:
             self.fail("incorrect exception was raised") 
+            
+    def test200_040_ShouldRaiseExceptionInvalidProject(self):
+        myCal = Calendar.Calendar()
+        myCal.add(1, 10)
+        myCal.add(2, 0)
+        myCal.add(3, 30)
+        myCal.add(4, 30)
+        myCal.add(5, 60)
+        myCal.add(6, 90)
+        expectedString = "Schedule.__init__:  "
+        try:
+            mySched = Schedule.Schedule(1,myCal)                                      
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised") 
 
 
 if __name__ == "__main__":

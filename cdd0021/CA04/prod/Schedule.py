@@ -18,6 +18,8 @@ class Schedule(object):
         '''
         Constructor
         '''
+        if (not isinstance(project, Project.Project)):
+            raise ValueError("Schedule.__init__:  Invalid instance for Project")
         if ((project.getEffort()==0) or (calendar.getTotalEffort==0)):
             raise ValueError("Schedule.__init__:  The calendar/project needs to have sufficient days/effort to create an instance")
         sumEffort = project.getEffort()

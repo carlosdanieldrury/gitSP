@@ -3,7 +3,7 @@ Created on Nov 4, 2014
 
 @author: drury
 '''
-from optparse import isbasestring
+#21 LOC
 from Crypto.Protocol.AllOrNothing import isInt
 
 class Iteration(object):

@@ -3,7 +3,7 @@ Created on Nov 5, 2014
 
 @author: drury
 '''
-
+#26 LOC
 class Project(object):
     '''
     Project Class

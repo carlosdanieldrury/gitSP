@@ -3,11 +3,10 @@ Created on Nov 6, 2014
 
 @author: drury
 '''
-import Iteration as Iteration
 import Project as Project
 import Calendar as Calendar
 from __builtin__ import int
-
+#50 LOC
 class Schedule(object):
     '''
     Schedule Class - Parameters: project and calendar
@@ -36,10 +35,8 @@ class Schedule(object):
         self.calendar = calendar
         
     def getLastDay(self):
-        sumEffort = 0
+        sumEffort = self.project.getEffort()
         numDays = 0
-        for iteration in self.project.getIterationList():
-            sumEffort += iteration.getEffort()
         while (sumEffort>0):
             sumEffort -= self.calendar.get(numDays+1)
             numDays += 1
@@ -51,10 +48,8 @@ class Schedule(object):
             raise ValueError("Schedule.getBurnDown:  The value of day needs to be integer")
         if ((day<1) or (day>self.calendar.getLength())):
             raise ValueError("Schedule.getBurnDown:  The value of day is out of the limit")
-        sumEffort = 0
         numDays = 0
-        for iteration in self.project.getIterationList():
-            sumEffort += iteration.getEffort()
+        sumEffort = self.project.getEffort()
         while (numDays<day):
             sumEffort -= self.calendar.get(numDays+1)
             numDays += 1
@@ -63,11 +58,9 @@ class Schedule(object):
     def getPV(self,day):
         if not isinstance(day, int):
             raise ValueError("Schedule.getPV:  The value of day needs to be integer")
-        sumEffort = 0
         numDays = 0
         remainingDays = self.getLastDay()
-        for iteration in self.project.getIterationList():
-            sumEffort += iteration.getEffort()
+        sumEffort = self.project.getEffort()
         while (numDays<day):
             sumEffort -= self.calendar.get(numDays+1)
             numDays += 1

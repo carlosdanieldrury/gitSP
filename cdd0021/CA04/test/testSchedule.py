@@ -248,6 +248,17 @@ class Test(unittest.TestCase):
             self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
         except:
             self.fail("incorrect exception was raised") 
+            
+    def test200_060_ShouldRaiseExceptionNoParam(self):
+        expectedString = "Schedule.__init__:  "
+        try:
+            mySched = Schedule.Schedule()                                     
+            self.fail("exception was not raised")                    
+        except ValueError as raisedException:                                           
+            diagnosticString = raisedException.args[0]                                   
+            self.assertEquals(expectedString, diagnosticString[0:len(expectedString)]) 
+        except:
+            self.fail("incorrect exception was raised") 
 
 
 if __name__ == "__main__":

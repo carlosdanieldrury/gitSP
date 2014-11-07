@@ -222,7 +222,7 @@ class Test(unittest.TestCase):
         myProject.add(iteration1)
         myProject.add(iteration2)
         
-        expectedString = "Schedule.getPV:  "
+        expectedString = "Schedule.__init__:  "
         try:
             mySched = Schedule.Schedule(myProject,1)                                     
             self.fail("exception was not raised")                    
